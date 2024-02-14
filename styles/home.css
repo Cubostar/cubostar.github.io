@@ -11,26 +11,13 @@ video {
 
 .container {
 	width: 90%;
-	height: 67.5%;
+	aspect-ratio: 4 / 3;
 	position: absolute;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -60%);
 	display: flex;
 	flex-direction: column;
-}
-
-@media screen and (min-width: 1000px) {
-	.container {
-		width: 800px;
-		height: 600px;
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%, -60%);
-		display: flex;
-		flex-direction: column;
-	}
 }
 
 header {
@@ -73,4 +60,17 @@ a:hover {
 
 a:active {
 	color: #e4d5b7;
+}
+
+@media screen and (min-width: 1024px) {
+	.container {
+		width: 800px;
+		height: 600px;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -60%);
+		display: flex;
+		flex-direction: column;
+	}
 }

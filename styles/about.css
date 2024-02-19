@@ -10,8 +10,8 @@ video {
 }
 
 .container {
-	width: 800px;
-	height: 600px;
+	width: 80%;
+	aspect-ratio: 4 / 3;
 	position: absolute;
 	top: 50%;
 	left: 50%;
@@ -36,8 +36,12 @@ img.mimage {
 	aspect-ratio: 1 / 1;
 }
 
-.content {
-	text-align: justify;
+nav {
+	display: flex;
+	flex-grow: 1;
+	flex-direction: column;
+	text-align: center;
+	gap: 10px;
 }
 
 a {
@@ -62,4 +66,30 @@ a:hover {
 
 a:active {
 	color: #e4d5b7;
+}
+
+@media screen and (min-width: 1024px) {
+	.container {
+		width: 600px;
+		aspect-ratio: 4 / 3;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -55%);
+		display: flex;
+		flex-direction: column;
+	}
+}
+
+@media screen and (min-width: 1280px) {
+	.container {
+		width: 800px;
+		aspect-ratio: 4 / 3;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -55%);
+		display: flex;
+		flex-direction: column;
+	}
 }

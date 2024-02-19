@@ -10,12 +10,12 @@ video {
 }
 
 .container {
-	width: 80%;
-	aspect-ratio: 4 / 3;
+	width: 300px;
+	height: 225px;
 	position: absolute;
 	top: 50%;
 	left: 50%;
-	transform: translate(-50%, -55%);
+	transform: translate(-50%, -60%);
 	display: flex;
 	flex-direction: column;
 }
@@ -64,8 +64,8 @@ a:active {
 
 @media screen and (min-width: 1024px) {
 	.container {
-		width: 640px;
-		aspect-ratio: 4 / 3;
+		width: 600px;
+		height: 450px;
 		position: absolute;
 		top: 50%;
 		left: 50%;
@@ -78,7 +78,7 @@ a:active {
 @media screen and (min-width: 1280px) {
 	.container {
 		width: 800px;
-		aspect-ratio: 4 / 3;
+		height: 600px;
 		position: absolute;
 		top: 50%;
 		left: 50%;

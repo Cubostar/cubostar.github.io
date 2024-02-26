@@ -1,7 +1,8 @@
 const metaJSON = [
 	{ "src": "images/home/srcs/mug.svg", "title": "first pixel art" },
 	{ "src": "images/home/srcs/shovel.svg", "title": "shovel" },
-	{ "src": "images/home/srcs/midnight-moonlight.svg", "title": "midnight moonlight" }
+	{ "src": "images/home/srcs/midnight-moonlight.svg", "title": "midnight moonlight" },
+	{ "src": "images/home/srcs/cubo.svg", "title": "cubo" }
 ];
 const mimages = document.getElementsByClassName("mimage");
 var randomIndex = Math.floor(Math.random() * metaJSON.length);

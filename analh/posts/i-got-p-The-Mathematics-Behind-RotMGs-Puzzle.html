@@ -4,14 +4,15 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width" />
 		<title>"i got p": The Mathematics Behind RotMG's Puzzle | analysishonors</title>
-		<link href="../styles/post.css" rel="stylesheet" />
+		<link href="../styles/i-got-p-The-Mathematics-Behind-RotMGs-Puzzle.css" rel="stylesheet" />
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet" />
-		<link rel="icon" href="../images/favicon.svg" />
+		<link rel="icon" href="../../images/favicon.svg" />
+		<script src="../scripts/puzzlegame.js" defer></script>
 	</head>
 	<body>
-		<a class="homebutton" href="/analh">analysishonors</a>
+		<a class="homebutton" href="/analh/home">analysishonors</a>
 		<div class="container">
 			<header>
 				<h1>"i got p": The Mathematics Behind RotMG's Puzzle</h1>
@@ -23,18 +24,36 @@
 
 				As I was doing exactly this, I discovered something interesting. In what most players consider the hardest dungeon of the game, there is sometimes a puzzle: a 3x3 array of towers, each illuminated with a red or green light.<br><br>
 
-				The goal is simple: turn all of the towers green by shooting them, and you'll progress towards the next boss. Considering the fact that the other options to progress all consist of fighting tens of enemies, this route seems much easier, doesn't it? The catch is the puzzle's insidious difficulty&mdash;any time a tower switches colors, the <em>adjacent towers also switch colors</em>. As a result, the puzzle is hard enough for players to solve that it sometimes ends up being faster for the group to clear enemies instead.<br><br>
+				The goal is simple: turn all of the towers green by shooting them, and you'll progress towards the next boss. Considering the fact that the other options to progress all consist of fighting tens of enemies, this route seems much easier, but there's a catch: any time a tower switches colors, the <em>adjacent towers also switch colors</em>. As a result, the puzzle is hard enough for players to solve that it sometimes ends up being faster for the group to clear enemies instead.<br><br>
 
-				I became interested in how to best solve the puzzle and the math behind it, so I went online to investigate.<br><br>
+				I became interested in how to best solve this puzzle and the math behind it, so I went online to investigate.<br><br>
 
 				<h2>The Origins of Puzzle</h2>
-				<em>RotMG's</em> puzzle is nothing new. The original puzzle is called <em>Lights Out</em>, which was released as a toy by Tiger Games in 1995. The toy was a 5x5 grid instead of 3x3, and instead of green and red towers, there were lit and unlit buttons. The goal was to turn all of the lights off, hence the name. It turns out that this game is popular among mathematicians and has had a lot of study done about it. One website in particular, <a href=https://www.jaapsch.net/puzzles/lights.htm>Jaap's Puzzle Page</a>, has a comprehensive page on the game.<br><br>
+				<em>RotMG's</em> puzzle is nothing new. The original puzzle is called <em>Lights Out</em>, which was released as a toy by Tiger Games in 1995. The toy was a 5x5 grid instead of 3x3, and instead of green and red towers, there were lit and unlit buttons. The goal was to turn all of the lights off, hence the name. It turns out that this game is popular among mathematicians and has had a lot of study done about it. One website in particular, <a target="_blank" href=https://www.jaapsch.net/puzzles/lights.htm>Jaap's Puzzle Page</a>, has a comprehensive page on the game.<br><br>
 
-				In fact, <em>RotMG</em> isn't even the first game to have a <em>Lights Out</em> puzzle in it. This <a href=https://youtu.be/0fHkKcy0x_U?si=YORjRul2Rw9sqrM->YouTube video by Physics for the Birds</a> shows variants of <em>Lights Out</em> in <em>The Legend of Zelda: Link's Awakening</em> and <em>LEGO Star Wars: The Skywalker Saga</em>. Physics for the Birds also explains how to solve <em>Lights Out</em>, so if you'd rather watch a video, I recommend theirs.<br><br>
+				In fact, <em>RotMG</em> isn't even the first game to have a <em>Lights Out</em> puzzle in it. This <a target="_blank" href=https://youtu.be/0fHkKcy0x_U?si=YORjRul2Rw9sqrM->YouTube video by Physics for the Birds</a> shows variants of <em>Lights Out</em> in <em>The Legend of Zelda: Link's Awakening</em> and <em>LEGO Star Wars: The Skywalker Saga</em>. Physics for the Birds also explains how to solve <em>Lights Out</em>, so if you'd rather watch a video, I recommend theirs.<br><br>
 
 				Although this topic has clearly been discussed in great detail, I still want to write about it. I'm making this blog post for myself and no one else, after all! The 3x3 version is a great place to start talking about the math behind the game, and my initial intention was to study the <em>RotMG</em> version anyways, so I'll be talking about this version. I'll try to add some narrative flair and describe my intuition in order to make readers feel like they're discovering the math with me, but I don't know how well I'll do at that. I'll also be assuming knowledge of an undergraduate math major, so be prepared.<br><br>
 
 				First, here's a version of the game if you want to play it:<br><br>
+
+				<div class="puzzlegame">
+					<div class="board">
+						<img src=../images/shatters-red-tower.png class="tower" data-row="0" data-col="0">
+						<img src=../images/shatters-green-tower.png class="tower" data-row="0" data-col="1">
+						<img src=../images/shatters-locked-tower.png class="tower" data-row="0" data-col="2">
+						<img src=../images/shatters-red-tower.png class="tower" data-row="1" data-col="0">
+						<img src=../images/shatters-green-tower.png class="tower" data-row="1" data-col="1">
+						<img src=../images/shatters-locked-tower.png class="tower" data-row="1" data-col="2">
+						<img src=../images/shatters-red-tower.png class="tower" data-row="2" data-col="0">
+						<img src=../images/shatters-green-tower.png class="tower" data-row="2" data-col="1">
+						<img src=../images/shatters-locked-tower.png class="tower" data-row="2" data-col="2">
+					</div>
+					<div class="buttons">
+						<button class="editbutton" title="lets you edit the puzzle configuration to whatever you want">edit</button>
+						<button class="randombutton" title="sets the puzzle to a random configuration">reroll</button>
+					</div>
+				</div>
 
 				<h2>Solving Puzzle</h2>
 				Let's think about how to frame the game in mathematical terms. To start, it seems sensible to assign each tower a sort of ID in order to distinguish them, so let's do that. We'll label each tower <em>t<sub>1</sub></em>, <em>t<sub>2</sub></em>, <em>t<sub>3</sub></em>, and so on, up to <em>t<sub>9</sub></em>.<br><br>
@@ -43,7 +62,7 @@
 
 				Let me try to explain it better: assume all of the towers should be red at the beginning. At the start of the puzzle, if a tower is red, its value is 0 since it's been switched zero times, which is an even number of times. If a tower is green, its value is 1 since it must have been switched an odd number of times as it was initially red. Whenever a tower switches colors, the number of times the tower and its adjacent towers increments by one, so the parity of those towers switches. Therefore, a tower goes from 0 to 1 or from 1 to 0 when switched.<br><br> 
 
-				In the mathematical world, we call the set <em>{0, 1}</em> under addition modulo 2 the cyclic group of order 2. We can also add multiplication modulo 2 to our set and make this set a field&mdash;the finite field of order 2. It seems like a good idea to add multiplication, since we may want to repeatedly switch a tower's color, which is repeatedly adding 1 to the tower's value.<br><br>
+				In the mathematical world, we call the set {0, 1} under addition modulo 2 the cyclic group of order 2. We can also add multiplication modulo 2 to our set and make this set a field&mdash;the finite field of order 2. It seems like a good idea to add multiplication, since we may want to repeatedly switch a tower's color, which is repeatedly adding 1 to the tower's value.<br><br>
 
 				Now, we can make equations. Suppose tower <em>t<sub>1</sub></em> is green. We need the number of switches on towers <em>t<sub>1</sub></em>, <em>t<sub>2</sub></em>, and <em>t<sub>4</sub></em> to sum to 0 in order to keep <em>t<sub>1</sub></em> green. Therefore, we get the equation <em>t<sub>1</sub></em> + <em>t<sub>2</sub></em> + <em>t<sub>4</sub></em> = 0. If <em>t<sub>1</sub></em> is red, we would instead need the number of switches to sum to 1 which results in the equation <em>t<sub>1</sub></em> + <em>t<sub>2</sub></em> + <em>t<sub>4</sub></em> = 1. Doing this for each tower in the initial configuration gives us the following system of equations:<br><br>
 

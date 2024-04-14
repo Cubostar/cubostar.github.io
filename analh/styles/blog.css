@@ -1,0 +1,115 @@
+html {
+	background-color: #fff0db;
+	font-family: "Open Sans", sans-serif;
+	font-size: 12px;
+}
+
+img,
+picture,
+video {
+	max-width: 100%;
+}
+
+a.homebutton {
+	text-decoration: none;
+	border: 4px solid #d9b99b;
+	border-radius: 10px;
+	color: black;
+	font-size: 1.5em;
+	font-weight: bold;
+	text-align: center;
+	display: inline-block;
+	width: 200px;
+}
+
+a.postlink {
+	text-decoration: none;
+	border: 4px solid #d9b99b;
+	border-radius: 10px;
+	color: black;
+	font-size: 1.17em;
+	font-weight: bold;
+	width: 40px;
+	text-align: center;
+	display: block;
+}
+
+.container {
+	width: 320px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+header {
+	text-align: center;
+}
+
+img.mimage {
+	width: 100%;
+	aspect-ratio: 1 / 1;
+}
+
+a:hover {
+	background-color: #eed9c4;
+	color: white;
+}
+
+a:active {
+	color: #e4d5b7;
+}
+
+.post {
+	display: flex;
+	gap: 7px;
+}
+
+.titlespace {
+	display: flex;
+	width: 100%;
+}
+
+.postlinkspace {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+@media screen and (min-width: 1024px) {
+	.container {
+		width: 600px;
+		margin-right: auto;
+		margin-left: auto;
+	}
+
+	html {
+		font-size: 16px;
+	}
+
+	main {
+		gap: 10px;
+	}
+
+	a {
+		border: 5px solid #d9b99b;
+	}
+
+	a.homebutton {
+		width: 267px;
+	}
+	
+	a.postlink {
+		width: 55px;
+	}
+
+	.post {
+		gap: 10px;
+	}
+}
+
+@media screen and (min-width: 1280px) {
+	.container {
+		width: 800px;
+		margin-right: auto;
+		margin-left: auto;
+	}
+}

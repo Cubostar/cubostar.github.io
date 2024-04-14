@@ -59,10 +59,10 @@
 						<button class="editbutton" title="lets you edit the puzzle configuration to whatever you want">edit</button>
 						<button class="randombutton" title="sets the puzzle to a random configuration">reroll</button>
 					</div>
-				</div>
+				</div><br><br>
 
 				<h2>Solving Puzzle</h2>
-				Let's think about how to frame the game in mathematical terms. To start, it seems sensible to assign each tower a sort of ID in order to distinguish them, so let's do that. We'll label each tower \(t_1\), \(t_2\), \(t_3\), and so on, up to \(t_9\).
+				Let's think about how to frame the game in mathematical terms. To start, it seems sensible to assign each tower a sort of ID in order to distinguish them, so let's do that. We'll label each tower \(t_1\), \(t_2\), \(t_3\), and so on, up to \(t_9\).<br><br>
 
 				<div class="towerlabels" title="labeling of towers">
 					<div class="towerlabel">
@@ -101,7 +101,7 @@
 						<img src="images/shatters-red-tower.png">
 						\(t_9\)
 					</div>
-				</div>
+				</div><br><br>
 
 				For the colors, I initially thought about representing them with booleans: true for green, and false for red. However, this representation proved troublesome to work with, since I couldn't get equations with them. I had really wanted to encode the colors as numbers so that I could form equations, and that's when I realized the colors can be encoded as the parity of the number of times the towers' lights have been switched.<br><br>
 
@@ -163,7 +163,7 @@
 						t_9 + t_6 + t_8 = 1
 						\end{eqnarray}\]
 					</div>
-				</div>
+				</div><br><br>
 
 				This system of equations is linear, so we can formulate this system with matrices!<br><br>
 
@@ -202,7 +202,7 @@
 						\end{bmatrix} \\
 						\Rightarrow A\vec{x} = \vec{b}
 					\end{gather*}
-				}{system of equations in matrix form}\]
+				}{system of equations in matrix form}\]<br><br>
 
 				Specifically, we are working in the vector space \(\mathbb{F}_{2}^{9}\), which is the set of 9-element vectors with \(\mathbb{F}_2\), the finite field of order 2, as our scalar field. Addition and multiplication in this vector space is inferred from the scalar field (i.e. they work like you'd expect them to).<br><br>
 
@@ -253,7 +253,7 @@
 							1
 						\end{bmatrix}
 					\end{gather*}
-				}{derivation of puzzle solution}\]
+				}{derivation of puzzle solution}\]<br><br>
 
 				So that's how you solve RotMG's puzzle! Here's a video of me solving the puzzle in the dungeon, although I'm definitely not inverting matrices in my head. Practically and efficiently solving the puzzle is a different story...<br><br><br>
 

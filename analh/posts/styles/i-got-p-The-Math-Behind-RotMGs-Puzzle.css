@@ -23,7 +23,7 @@ a.homebutton {
 }
 
 .container {
-	width: 320px;
+	width: 340px;
 	margin-right: auto;
 	margin-left: auto;
 }
@@ -46,7 +46,7 @@ a.homebutton {
 	display: grid;
 	grid-template-rows: 1fr 1fr 1fr;
 	grid-template-columns: 1fr 1fr 1fr;
-	width: 60%;
+	width: 50%;
 	align-items: center;
 	justify-items: center;
 	aspect-ratio: 1 / 1;
@@ -67,7 +67,7 @@ a.homebutton {
 
 .equations {
 	display: flex;
-	width: 40%;
+	width: 50%;
 	flex-direction: column;
 	justify-content: center;
 	margin: 0;

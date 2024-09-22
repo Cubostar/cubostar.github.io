@@ -23,7 +23,8 @@ a.homebutton {
 }
 
 .container {
-	max-width: 340px;
+	padding-right: 16px;
+	padding-left: 16px;
 	margin-right: auto;
 	margin-left: auto;
 }
@@ -89,6 +90,11 @@ t	justify-items: center;
 	justify-content: center;
 	width: 40%;
 	gap: 7px;
+}
+
+.mathjax {
+	display: flex;
+	justify-content: center;
 }
 
 button {

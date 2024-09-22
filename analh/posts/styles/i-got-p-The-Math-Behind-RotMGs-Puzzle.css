@@ -23,6 +23,7 @@ a.homebutton {
 }
 
 .container {
+	max-width: 340px;
 	padding-right: 16px;
 	padding-left: 16px;
 	margin-right: auto;

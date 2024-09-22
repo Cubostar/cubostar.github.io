@@ -19,29 +19,28 @@
 			<header>
 				<h1>"i got p": The Math Behind RotMG's Puzzle</h1>
 			</header>
-			<br>
 			<div class="postcontent">
 				<h2>Introduction</h2>
-				<em>Realm of the Mad God</em> (<em>RotMG</em>) is one of my favorite games. It's a bullet hell MMORPG that's been around for more than a decade. Known for its cute pixel art sprite graphics, intense projectile patterns, and a permadeath mechanic (that's right, permadeath), <em>RotMG</em> is not a game for everyone. It's common for people to spend countless hours on a character only to lose it in a matter of milliseconds, yet people somehow still find the ability and desire to traverse the most difficult dungeons and navigate absurd obstacles for the chance at acquiring incredible loot.<br><br>
+				<p><em>Realm of the Mad God</em> (<em>RotMG</em>) is one of my favorite games. It's a bullet hell MMORPG that's been around for more than a decade. Known for its cute pixel art sprite graphics, intense projectile patterns, and a permadeath mechanic (that's right, permadeath), <em>RotMG</em> is not a game for everyone. It's common for people to spend countless hours on a character only to lose it in a matter of milliseconds, yet people somehow still find the ability and desire to traverse the most difficult dungeons and navigate absurd obstacles for the chance at acquiring incredible loot.</p>
 
-				As I was doing exactly this, I discovered something interesting. In what most players consider the hardest dungeon of the game, there is sometimes a puzzle: a 3x3 array of towers, each illuminated with a red or green light.<br><br><br>
+				<p>As I was doing exactly this, I discovered something interesting. In what most players consider the hardest dungeon of the game, there is sometimes a puzzle: a 3x3 array of towers, each illuminated with a red or green light.</p>
 
 				<div class="assetspace">
 					<video autoplay loop playsinline muted title="puzzle"><source src="videos/puzzle.mp4" type="video/mp4"></video>
-				</div><br><br>
+				</div>
 
-				The goal is simple: turn all of the towers green by shooting them, and you'll progress towards the next boss. Considering the fact that the other options to progress all consist of fighting tens of enemies, this route seems much easier, but there's a catch: any time a tower switches colors, the <em>adjacent towers also switch colors</em>. As a result, the puzzle is hard enough for players to solve that it sometimes ends up being faster for the group to clear enemies instead.<br><br>
+				<p>The goal is simple: turn all of the towers green by shooting them, and you'll progress towards the next boss. Considering the fact that the other options to progress all consist of fighting tens of enemies, this route seems much easier, but there's a catch: any time a tower switches colors, the <em>adjacent towers also switch colors</em>. As a result, the puzzle is hard enough for players to solve that it sometimes ends up being faster for the group to clear enemies instead.</p>
 
-				I became interested in how to best solve this puzzle and the math behind it, so I went online to investigate.<br><br>
+				<p>I became interested in how to best solve this puzzle and the math behind it, so I went online to investigate.</p>
 
 				<h2>The Origins of Puzzle</h2>
-				<em>RotMG's</em> puzzle is nothing new. The original puzzle is called <em>Lights Out</em>, which was released as a toy by Tiger Games in 1995. The toy was a 5x5 grid instead of 3x3, and instead of green and red towers, there were lit and unlit buttons. The goal was to turn all of the lights off, hence the name. It turns out that this game is popular among mathematicians and has had a lot of study done about it. One website in particular, <a target="_blank" href=https://www.jaapsch.net/puzzles/lights.htm>Jaap's Puzzle Page</a>, has a comprehensive page on the game.<br><br>
+				<p><em>RotMG's</em> puzzle is nothing new. The original puzzle is called <em>Lights Out</em>, which was released as a toy by Tiger Games in 1995. The toy was a 5x5 grid instead of 3x3, and instead of green and red towers, there were lit and unlit buttons. The goal was to turn all of the lights off, hence the name. It turns out that this game is popular among mathematicians and has had a lot of study done about it. One website in particular, <a target="_blank" href=https://www.jaapsch.net/puzzles/lights.htm>Jaap's Puzzle Page</a>, has a comprehensive page on the game.</p>
 
-				In fact, <em>RotMG</em> isn't even the first game to have a <em>Lights Out</em> puzzle in it. This <a target="_blank" href=https://youtu.be/0fHkKcy0x_U?si=YORjRul2Rw9sqrM->YouTube video by Physics for the Birds</a> shows variants of <em>Lights Out</em> in <em>The Legend of Zelda: Link's Awakening</em> and <em>LEGO Star Wars: The Skywalker Saga</em>. Physics for the Birds also explains how to solve <em>Lights Out</em>, so if you'd rather watch a video, I recommend theirs.<br><br>
+				<p>In fact, <em>RotMG</em> isn't even the first game to have a <em>Lights Out</em> puzzle in it. This <a target="_blank" href=https://youtu.be/0fHkKcy0x_U?si=YORjRul2Rw9sqrM->YouTube video by Physics for the Birds</a> shows variants of <em>Lights Out</em> in <em>The Legend of Zelda: Link's Awakening</em> and <em>LEGO Star Wars: The Skywalker Saga</em>. Physics for the Birds also explains how to solve <em>Lights Out</em>, so if you'd rather watch a video, I recommend theirs.</p>
 
-				Although this topic has clearly been discussed in great detail, I still want to write about it. One of the best ways to learn something is by explaining it to others, after all! The 3x3 version is a great place to start talking about the math behind the game, and my initial intention was to study the <em>RotMG</em> version anyways, so I'll be talking about this version. I'll try to add some narrative flair and describe my intuition in order to make readers feel like they're discovering the math with me, but I don't know how well I'll do at that. I'll also be assuming knowledge of an undergraduate math major, so be prepared.<br><br>
+				<p>Although this topic has clearly been discussed in great detail, I still want to write about it. One of the best ways to learn something is by explaining it to others, after all! The 3x3 version is a great place to start talking about the math behind the game, and my initial intention was to study the <em>RotMG</em> version anyways, so I'll be talking about this version. I'll try to add some narrative flair and describe my intuition in order to make readers feel like they're discovering the math with me, but I don't know how well I'll do at that. I'll also be assuming knowledge of an undergraduate math major, so be prepared.</p>
 
-				First, here's a version of the game if you want to play it:<br><br>
+				<p>First, here's a version of the game if you want to play it:</p>
 
 				<div class="puzzlegame">
 					<div class="board">
@@ -59,10 +58,10 @@
 						<button class="editbutton" title="lets you edit the puzzle configuration to whatever you want">edit</button>
 						<button class="randombutton" title="sets the puzzle to a random configuration">reroll</button>
 					</div>
-				</div><br><br>
+				</div>
 
 				<h2>Solving Puzzle</h2>
-				Let's think about how to frame the game in mathematical terms. To start, it seems sensible to assign each tower a sort of ID in order to distinguish them, so let's do that. We'll label each tower \(t_1\), \(t_2\), \(t_3\), and so on, up to \(t_9\).<br><br>
+				<p>Let's think about how to frame the game in mathematical terms. To start, it seems sensible to assign each tower a sort of ID in order to distinguish them, so let's do that. We'll label each tower \(t_1\), \(t_2\), \(t_3\), and so on, up to \(t_9\).</p>
 
 				<div class="towerlabels" title="labeling of towers">
 					<div class="towerlabel">
@@ -101,15 +100,15 @@
 						<img src="images/shatters-red-tower.png">
 						\(t_9\)
 					</div>
-				</div><br><br>
+				</div>
 
-				For the colors, I initially thought about representing them with booleans: true for green, and false for red. However, this representation proved troublesome to work with, since I couldn't get equations with them. I had really wanted to encode the colors as numbers so that I could form equations, and that's when I realized the colors can be encoded as the parity of the number of times the towers' lights have been switched.<br><br>
+				<p>For the colors, I initially thought about representing them with booleans: true for green, and false for red. However, this representation proved troublesome to work with, since I couldn't get equations with them. I had really wanted to encode the colors as numbers so that I could form equations, and that's when I realized the colors can be encoded as the parity of the number of times the towers' lights have been switched.</p>
 
-				Let me try to explain it better: assume all of the towers should be red at the beginning. At the start of the puzzle, if a tower is red, its value is 0 since it's been switched zero times, which is an even number of times. If a tower is green, its value is 1 since it must have been switched an odd number of times as it was initially red. Whenever a tower switches colors, the number of times the tower and its adjacent towers increments by one, so the parity of those towers switches. Therefore, a tower goes from 0 to 1 or from 1 to 0 when switched.<br><br> 
+				<p>Let me try to explain it better: assume all of the towers should be red at the beginning. At the start of the puzzle, if a tower is red, its value is 0 since it's been switched zero times, which is an even number of times. If a tower is green, its value is 1 since it must have been switched an odd number of times as it was initially red. Whenever a tower switches colors, the number of times the tower and its adjacent towers increments by one, so the parity of those towers switches. Therefore, a tower goes from 0 to 1 or from 1 to 0 when switched.</p>
 
-				Mathematically, we call the set {0, 1} under addition modulo 2 the cyclic group of order 2. We can also add multiplication modulo 2 to our set and make this set a field&mdash;the finite field of order 2. It seems like a good idea to add multiplication, since we may want to repeatedly switch a tower's color, which is repeatedly adding 1 to the tower's value.<br><br>
+				<p>Mathematically, we call the set {0, 1} under addition modulo 2 the cyclic group of order 2. We can also add multiplication modulo 2 to our set and make this set a field&mdash;the finite field of order 2. It seems like a good idea to add multiplication, since we may want to repeatedly switch a tower's color, which is repeatedly adding 1 to the tower's value.</p>
 
-				Now, we can make equations. Suppose tower \(t_1\) is green. We need the number of switches on towers \(t_1\), \(t_2\), and \(t_4\) to sum to 0 in order to keep \(t_1\) green. Therefore, we get the equation \(t_1 + t_2 + t_4 = 0\). If \(t_1\) is red, we would instead need the number of switches to sum to 1 which results in the equation \(t_1 + t_2 + t_4 = 1\). Doing this for each tower in the initial configuration gives us the following system of equations:<br><br>
+				<p>Now, we can make equations. Suppose tower \(t_1\) is green. We need the number of switches on towers \(t_1\), \(t_2\), and \(t_4\) to sum to 0 in order to keep \(t_1\) green. Therefore, we get the equation \(t_1 + t_2 + t_4 = 0\). If \(t_1\) is red, we would instead need the number of switches to sum to 1 which results in the equation \(t_1 + t_2 + t_4 = 1\). Doing this for each tower in the initial configuration gives us the following system of equations:</p>
 
 				<div class="labelstoequations">
 					<div class="towerlabels" title="labeling of towers">
@@ -163,9 +162,9 @@
 						t_9 + t_6 + t_8 = 1
 						\end{eqnarray}\]
 					</div>
-				</div><br><br>
+				</div>
 
-				This system of equations is linear, so we can formulate this system with matrices!<br><br>
+				<p>This system of equations is linear, so we can formulate this system with matrices!</p>
 
 				\[\texttip{
 					\begin{gather*}
@@ -202,11 +201,11 @@
 						\end{bmatrix} \\
 						\Rightarrow A\vec{x} = \vec{b}
 					\end{gather*}
-				}{system of equations in matrix form}\]<br><br>
+				}{system of equations in matrix form}\]
 
-				Specifically, we are working in the vector space \(\mathbb{F}_{2}^{9}\), which is the set of 9-element vectors with \(\mathbb{F}_2\), the finite field of order 2, as our scalar field. Addition and multiplication in this vector space is inferred from the scalar field (i.e. they work like you'd expect them to).<br><br>
+				<p>Specifically, we are working in the vector space \(\mathbb{F}_{2}^{9}\), which is the set of 9-element vectors with \(\mathbb{F}_2\), the finite field of order 2, as our scalar field. Addition and multiplication in this vector space is inferred from the scalar field (i.e. they work like you'd expect them to).</p>
 
-				In order to solve for our solution vector \(\vec{x}\), we need to left-multiply \(\vec{b}\) by \(A^{-1}\), so we need to check if \(A\) is invertible. Computing the determinant of \(A\) (remember we're working modulo 2) gives us \(\text{det}(A) = 1\), which means that \(A\) is invertible. This fact gives us some additional realizations: every position has exactly one solution, and each tower only needs to be switched at most once. After inverting \(A\) and computing \(\vec{x} = A^{-1}\vec{b}\), we get our solution, which specifies exactly which towers to hit:<br><br>
+				<p>In order to solve for our solution vector \(\vec{x}\), we need to left-multiply \(\vec{b}\) by \(A^{-1}\), so we need to check if \(A\) is invertible. Computing the determinant of \(A\) (remember we're working modulo 2) gives us \(\text{det}(A) = 1\), which means that \(A\) is invertible. This fact gives us some additional realizations: every position has exactly one solution, and each tower only needs to be switched at most once. After inverting \(A\) and computing \(\vec{x} = A^{-1}\vec{b}\), we get our solution, which specifies exactly which towers to hit:</p>
 
 				\[\texttip{
 					\begin{gather*}
@@ -253,13 +252,13 @@
 							1
 						\end{bmatrix}
 					\end{gather*}
-				}{derivation of puzzle solution}\]<br><br>
+				}{derivation of puzzle solution}\]
 
-				So that's how you solve RotMG's puzzle! Here's a video of me solving the puzzle in the dungeon, although I'm definitely not inverting matrices in my head. Practically and efficiently solving the puzzle is a different story...<br><br><br>
+				<p>So that's how you solve RotMG's puzzle! Here's a video of me solving the puzzle in the dungeon, although I'm definitely not inverting matrices in my head. Practically and efficiently solving the puzzle is a different story...</p>
 
 				<div class="assetspace">
 					<video controls muted title="solving puzzle"><source src="videos/solving-puzzle.mp4" type="video/mp4"></video>
-				</div><br><br><br><br>
+				</div>
 			</div>
 		</div>
 	</body>

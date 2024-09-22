@@ -1,7 +1,7 @@
 html {
 	background-color: #fff0db;
 	font-family: "Open Sans", sans-serif;
-	font-size: 15px;
+	font-size: 16px;
 }
 
 img,
@@ -23,8 +23,8 @@ a.homebutton {
 }
 
 .container {
-	padding-right: 15px;
-	padding-left: 15px;
+	padding-right: 16px;
+	padding-left: 16px;
 	margin-right: auto;
 	margin-left: auto;
 }
@@ -47,7 +47,7 @@ a.homebutton {
 	display: grid;
 	grid-template-rows: 1fr 1fr 1fr;
 	grid-template-columns: 1fr 1fr 1fr;
-	width: 50%;
+	max-width: 50%;
 	align-items: center;
 t	justify-items: center;
 	aspect-ratio: 1 / 1;
@@ -68,7 +68,6 @@ t	justify-items: center;
 
 .equations {
 	display: flex;
-	width: 50%;
 	flex-direction: column;
 	justify-content: center;
 	margin: 0;
@@ -96,6 +95,7 @@ t	justify-items: center;
 	display: flex;
 	width: 100%;
 	justify-content: center;
+	overflow: auto;
 }
 
 button {
@@ -148,9 +148,6 @@ a:active {
 }
 
 @media screen and (min-width: 1024px) {
-	html {
-		font-size: 16px;
-	}
 	.container {
 		max-width: 800px;
 		padding-right: 24px;

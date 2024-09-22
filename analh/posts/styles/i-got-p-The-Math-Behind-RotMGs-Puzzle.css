@@ -1,7 +1,7 @@
 html {
 	background-color: #fff0db;
 	font-family: "Open Sans", sans-serif;
-	font-size: 12px;
+	font-size: 16px;
 }
 
 img,
@@ -23,7 +23,8 @@ a.homebutton {
 }
 
 .container {
-	width: 340px;
+	padding-right: 16px;
+	padding-left: 16px;
 	margin-right: auto;
 	margin-left: auto;
 }
@@ -48,7 +49,7 @@ a.homebutton {
 	grid-template-columns: 1fr 1fr 1fr;
 	width: 50%;
 	align-items: center;
-	justify-items: center;
+t	justify-items: center;
 	aspect-ratio: 1 / 1;
 	margin-right: auto;
 	margin-left: auto;
@@ -102,6 +103,7 @@ button {
 	font-weight: bold;
 	text-align: center;
 	width: 100%;
+	cursor: pointer;
 }
 
 button:hover {
@@ -141,16 +143,11 @@ a:active {
 
 @media screen and (min-width: 1024px) {
 	.container {
-		width: 600px;
+		max-width: 800px;
+		padding-right: 24px;
+		padding-left: 24px;
 		margin-right: auto;
 		margin-left: auto;
-	}
-
-	html {
-		font-size: 16px;
-	}
-
-	.board {
 	}
 
 	a.homebutton {
@@ -168,13 +165,5 @@ a:active {
 
 	.towerlabel {
 		gap: 5px;
-	}
-}
-
-@media screen and (min-width: 1280px) {
-	.container {
-		width: 800px;
-		margin-right: auto;
-		margin-left: auto;
 	}
 }

@@ -47,9 +47,9 @@ a.homebutton {
 	display: grid;
 	grid-template-rows: 1fr 1fr 1fr;
 	grid-template-columns: 1fr 1fr 1fr;
-	max-width: 50%;
+	width: 50%;
 	align-items: center;
-t	justify-items: center;
+	justify-items: center;
 	aspect-ratio: 1 / 1;
 	margin-right: auto;
 	margin-left: auto;
@@ -95,7 +95,7 @@ t	justify-items: center;
 	display: flex;
 	width: 100%;
 	justify-content: center;
-	overflow: auto;
+	overflow-x: auto;
 }
 
 button {

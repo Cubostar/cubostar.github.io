@@ -166,93 +166,97 @@
 
 				<p>This system of equations is linear, so we can formulate this system with matrices!</p>
 
-				\[\texttip{
-					\begin{gather*}
-						\begin{bmatrix}
-							1 & 1 & 0 & 1 & 0 & 0 & 0 & 0 & 0 \\
-							1 & 1 & 1 & 0 & 1 & 0 & 0 & 0 & 0 \\
-							0 & 1 & 1 & 0 & 0 & 1 & 0 & 0 & 0 \\
-							1 & 0 & 0 & 1 & 1 & 0 & 1 & 0 & 0 \\
-							0 & 1 & 0 & 1 & 1 & 1 & 0 & 1 & 0 \\
-							0 & 0 & 1 & 0 & 1 & 1 & 0 & 0 & 1 \\
-							0 & 0 & 0 & 1 & 0 & 0 & 1 & 1 & 0 \\
-							0 & 0 & 0 & 0 & 1 & 0 & 1 & 1 & 1 \\
-							0 & 0 & 0 & 0 & 0 & 1 & 0 & 1 & 1 \\
-						\end{bmatrix}\begin{bmatrix}
-							t_1 \\
-							t_2 \\
-							t_3 \\
-							t_4 \\
-							t_5 \\
-							t_6 \\
-							t_7 \\
-							t_8 \\
-							t_9 \\
-						\end{bmatrix}=\begin{bmatrix}
-							0 \\
-							0 \\
-							0 \\
-							1 \\
-							0 \\
-							0 \\
-							1 \\
-							1 \\
-							1
-						\end{bmatrix} \\
-						\Rightarrow A\vec{x} = \vec{b}
-					\end{gather*}
-				}{system of equations in matrix form}\]
+				<div class=mathjax>
+					\[\texttip{
+						\begin{gather*}
+							\begin{bmatrix}
+								1 & 1 & 0 & 1 & 0 & 0 & 0 & 0 & 0 \\
+								1 & 1 & 1 & 0 & 1 & 0 & 0 & 0 & 0 \\
+								0 & 1 & 1 & 0 & 0 & 1 & 0 & 0 & 0 \\
+								1 & 0 & 0 & 1 & 1 & 0 & 1 & 0 & 0 \\
+								0 & 1 & 0 & 1 & 1 & 1 & 0 & 1 & 0 \\
+								0 & 0 & 1 & 0 & 1 & 1 & 0 & 0 & 1 \\
+								0 & 0 & 0 & 1 & 0 & 0 & 1 & 1 & 0 \\
+								0 & 0 & 0 & 0 & 1 & 0 & 1 & 1 & 1 \\
+								0 & 0 & 0 & 0 & 0 & 1 & 0 & 1 & 1 \\
+							\end{bmatrix}\begin{bmatrix}
+								t_1 \\
+								t_2 \\
+								t_3 \\
+								t_4 \\
+								t_5 \\
+								t_6 \\
+								t_7 \\
+								t_8 \\
+								t_9 \\
+							\end{bmatrix}=\begin{bmatrix}
+								0 \\
+								0 \\
+								0 \\
+								1 \\
+								0 \\
+								0 \\
+								1 \\
+								1 \\
+								1
+							\end{bmatrix} \\
+							\Rightarrow A\vec{x} = \vec{b}
+						\end{gather*}
+					}{system of equations in matrix form}\]
+				</div>
 
 				<p>Specifically, we are working in the vector space \(\mathbb{F}_{2}^{9}\), which is the set of 9-element vectors with \(\mathbb{F}_2\), the finite field of order 2, as our scalar field. Addition and multiplication in this vector space is inferred from the scalar field (i.e. they work like you'd expect them to).</p>
 
 				<p>In order to solve for our solution vector \(\vec{x}\), we need to left-multiply \(\vec{b}\) by \(A^{-1}\), so we need to check if \(A\) is invertible. Computing the determinant of \(A\) (remember we're working modulo 2) gives us \(\text{det}(A) = 1\), which means that \(A\) is invertible. This fact gives us some additional realizations: every position has exactly one solution, and each tower only needs to be switched at most once. After inverting \(A\) and computing \(\vec{x} = A^{-1}\vec{b}\), we get our solution, which specifies exactly which towers to hit:</p>
 
-				\[\texttip{
-					\begin{gather*}
-						\vec{x} = A^{-1}\vec{b} \\
-						\Rightarrow \begin{bmatrix}
-							t_1 \\
-							t_2 \\
-							t_3 \\
-							t_4 \\
-							t_5 \\
-							t_6 \\
-							t_7 \\
-							t_8 \\
-							t_9 \\
-						\end{bmatrix} = \begin{bmatrix}
-							1 & 0 & 1 & 0 & 0 & 1 & 1 & 1 & 0 \\
-							0 & 0 & 0 & 0 & 1 & 0 & 1 & 1 & 1 \\
-							1 & 0 & 1 & 1 & 0 & 0 & 0 & 1 & 1 \\
-							0 & 0 & 1 & 0 & 1 & 1 & 0 & 0 & 1 \\
-							0 & 1 & 0 & 1 & 1 & 1 & 0 & 1 & 0 \\
-							1 & 0 & 0 & 1 & 1 & 0 & 1 & 0 & 0 \\
-							1 & 1 & 0 & 0 & 0 & 1 & 1 & 0 & 1 \\
-							1 & 1 & 1 & 0 & 1 & 0 & 0 & 0 & 0 \\
-							0 & 1 & 1 & 1 & 0 & 0 & 1 & 0 & 1 \\
-						\end{bmatrix}\begin{bmatrix}
-							0 \\
-							0 \\
-							0 \\
-							1 \\
-							0 \\
-							0 \\
-							1 \\
-							1 \\
-							1
-						\end{bmatrix}=\begin{bmatrix}
-							0 \\
-							1 \\
-							1 \\
-							1 \\
-							0 \\
-							0 \\
-							0 \\
-							0 \\
-							1
-						\end{bmatrix}
-					\end{gather*}
-				}{derivation of puzzle solution}\]
+				<div class="mathjax">
+					\[\texttip{
+						\begin{gather*}
+							\vec{x} = A^{-1}\vec{b} \\
+							\Rightarrow \begin{bmatrix}
+								t_1 \\
+								t_2 \\
+								t_3 \\
+								t_4 \\
+								t_5 \\
+								t_6 \\
+								t_7 \\
+								t_8 \\
+								t_9 \\
+							\end{bmatrix} = \begin{bmatrix}
+								1 & 0 & 1 & 0 & 0 & 1 & 1 & 1 & 0 \\
+								0 & 0 & 0 & 0 & 1 & 0 & 1 & 1 & 1 \\
+								1 & 0 & 1 & 1 & 0 & 0 & 0 & 1 & 1 \\
+								0 & 0 & 1 & 0 & 1 & 1 & 0 & 0 & 1 \\
+								0 & 1 & 0 & 1 & 1 & 1 & 0 & 1 & 0 \\
+								1 & 0 & 0 & 1 & 1 & 0 & 1 & 0 & 0 \\
+								1 & 1 & 0 & 0 & 0 & 1 & 1 & 0 & 1 \\
+								1 & 1 & 1 & 0 & 1 & 0 & 0 & 0 & 0 \\
+								0 & 1 & 1 & 1 & 0 & 0 & 1 & 0 & 1 \\
+							\end{bmatrix}\begin{bmatrix}
+								0 \\
+								0 \\
+								0 \\
+								1 \\
+								0 \\
+								0 \\
+								1 \\
+								1 \\
+								1
+							\end{bmatrix}=\begin{bmatrix}
+								0 \\
+								1 \\
+								1 \\
+								1 \\
+								0 \\
+								0 \\
+								0 \\
+								0 \\
+								1
+							\end{bmatrix}
+						\end{gather*}
+					}{derivation of puzzle solution}\]
+				</div>
 
 				<p>So that's how you solve RotMG's puzzle! Here's a video of me solving the puzzle in the dungeon, although I'm definitely not inverting matrices in my head. Practically and efficiently solving the puzzle is a different story...</p>
 

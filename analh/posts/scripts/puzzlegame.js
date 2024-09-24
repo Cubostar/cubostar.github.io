@@ -1,6 +1,6 @@
-const shattersRedTowerSrc = "images/shatters-red-tower.png";
-const shattersGreenTowerSrc = "images/shatters-green-tower.png";
-const shattersLockedTowerSrc = "images/shatters-locked-tower.png";
+const shattersRedTowerSrc = "images/shatters-red-tower.svg";
+const shattersGreenTowerSrc = "images/shatters-green-tower.svg";
+const shattersLockedTowerSrc = "images/shatters-locked-tower.svg";
 
 const puzzleGameModel = {
 	board: [[0, 0, 0], [0, 0, 0], [0, 0, 0]],

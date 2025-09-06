@@ -22,6 +22,10 @@ video {
 	margin-left: auto;
 }
 
+.content {
+	text-align: justify;
+}
+
 header {
 	text-align: center;
 }
